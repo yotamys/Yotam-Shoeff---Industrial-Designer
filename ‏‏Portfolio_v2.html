@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yotam Shoeff – Industrial Designer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #e5e5e5;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5em 3em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      background-color: transparent;
+    }
+
+    header.scrolled-up {
+      background-color: rgba(255, 255, 255, 0.95);
+      transform: translateY(0);
+      border-bottom: 1px solid #ddd;
+    }
+
+    header.scrolled-down {
+      transform: translateY(-100%);
+    }
+
+    nav a {
+      margin-left: 2em;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #888;
+    }
+
+    .hero-wrapper {
+      width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      width: 100vw;
+      max-width: none;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content p {
+      font-size: 1.2em;
+      color: #eee;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 1.5em;
+      padding: 0.9em 1.8em;
+      background: black;
+      color: white;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background: #333;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 3em 2em;
+    }
+
+    #projects {
+      margin-top: 3em;
+    }
+
+    #projects .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2em;
+    }
+
+    .project-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+      display: block;
+      aspect-ratio: 1 / 1;
+    }
+
+    .project-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .project-tile:hover img {
+      transform: scale(1.05);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.35);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-tile:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay h3 {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      color: white;
+      font-size: 1.2em;
+      text-align: left;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3em;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="mainHeader">
+    <div><strong>Yotam Shoeff</strong></div>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero-wrapper">
+    <section class="hero">
+      <video autoplay muted loop playsinline>
+        <source src="Pics/hero.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-content">
+        <h1>Yotam Shoeff<br>Industrial Designer</h1>
+        <p></p>
+        <a class="button" href="#projects">See My Work</a>
+      </div>
+    </section>
+  </div>
+
+  <section id="projects">
+    <div class="grid">
+      <a class="project-tile" href="ICON_Page.html">
+        <img src="Pics/ICON.png" alt="ICON project">
+        <div class="overlay"><h3>ICON</h3></div>
+      </a>
+      <a class="project-tile" href="Tweezers_Page.html">
+        <img src="Pics/Tweezers.png" alt="Tweezers">
+        <div class="overlay"><h3>Tweezers for<br>Ring Soldering</h3></div>
+      </a>
+      <a class="project-tile" href="Pen_Page.html">
+        <img src="Pics/Pen case.png" alt="Pen Case">
+        <div class="overlay"><h3>Pen Case</h3></div>
+      </a>
+      <a class="project-tile" href="Mushroom_Page.html">
+        <img src="Pics/Mushroom pot.png" alt="Mushrooms Pot">
+        <div class="overlay"><h3>Mushrooms Pot</h3></div>
+      </a>
+      <a class="project-tile" href="Hammer_14:44 ‏04/‏08/‏2025Page.html">
+        <img src="Pics/Hammer.png" alt="Hammer">
+        <div class="overlay"><h3>Geologist Hammer</h3></div>
+      </a>
+      <a class="project-tile" href="Rendering_Page.html">
+        <img src="Pics/Renderings.png" alt="Renderings">
+        <div class="overlay"><h3>Renderings & CAD</h3></div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Yotam Shoeff – All rights reserved.
+  </footer>
+
+  <script>
+    let lastScrollY = window.scrollY;
+    const header = document.getElementById('mainHeader');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll === 0) {
+        header.classList.remove('scrolled-up', 'scrolled-down');
+        return;
+      }
+
+      if (currentScroll < lastScrollY) {
+        // scrolling up
+        header.classList.remove('scrolled-down');
+        header.classList.add('scrolled-up');
+      } else {
+        // scrolling down
+        header.classList.remove('scrolled-up');
+        header.classList.add('scrolled-down');
+      }
+
+      lastScrollY = currentScroll;
+    });
+  </script>
+
+</body>
+</html>

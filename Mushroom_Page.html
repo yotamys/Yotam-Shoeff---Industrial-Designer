@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mushrooms – Yotam Shoeff</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; font-family: 'Helvetica Neue', sans-serif; background: #e5e5e5; color: #111; line-height: 1.6; }
+
+    /* Header styles */
+    header { position: fixed; top: 0; left: 0; width: 100%; padding: 1em 2em; display: flex; justify-content: space-between; align-items: center; background: transparent; z-index: 1000; transition: background-color .3s ease; }
+    .title { transition: opacity .3s ease; font-weight: bold; color: #e3e0c2; }
+    header.scrolled .title { opacity: 0; }
+
+    /* Navigation links */
+    nav a { margin-left: 1.5em; text-decoration: none; color: #e3e0c2; font-weight: 600; transition: color .3s ease; }
+    nav a:hover { color: #777; }
+    nav a.contact { transition: opacity .3s ease; }
+
+    /* Revert Back to Home color on scroll */
+    header.scrolled nav a { color: #333; }
+    header.scrolled nav a.contact { opacity: 0; pointer-events: none; }
+
+    /* Hero and overlay */
+    .hero {
+      position: relative;
+      width: 100vw;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .hero img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay {
+      position: absolute;
+      top: 2em;
+      left: 2em;
+      z-index: 1;
+      transition: opacity .3s ease, transform .3s ease;
+    }
+    .hero-overlay h1 {
+      font-size: 5rem;
+      margin: 0;
+      color: #e3e0c2;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      font-weight: bold;
+    }
+    /* Fade and slide overlay when header is scrolled */
+    header.scrolled + .hero .hero-overlay {
+      opacity: 0;
+      transform: translateY(-100px);
+      pointer-events: none;
+    }
+
+    /* Section styling */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 6em 2em;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 2em;
+    }
+    .text { flex: 1 1 45%; }
+    .image { flex: 1 1 45%; }
+    .image img { width: 100%; border-radius: 8px; }
+
+    /* Sidebar menu */
+    .menu { opacity: 0; pointer-events: none; position: fixed; top: 25%; right: 2em; transform: translateY(-50%); background: #fff; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); padding: 1em; transition: opacity .5s ease; z-index: 999; }
+    .menu.show { opacity: 1; pointer-events: auto; }
+    .menu a { display: block; margin: .5em 0; font-size: .95em; color: #111; text-decoration: none; }
+    .menu a:hover { color: #777; }
+
+    /* Gallery styling */
+    #gallery { display: block; max-width: 800px; margin: 2em auto; }
+    #gallery .image { width: 100%; margin-bottom: 2em; flex: none; }
+
+  </style>
+</head>
+<body>
+  <header id="mainHeader">
+    <div class="title">Yotam Shoeff</div>
+    <nav>
+      <a href="Contact.html" class="contact">Contact</a>
+      <a href="‏‏Portfolio_v2.html">Back to Home</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="heroSection">
+    <img src="Pics/hero_Mushrooms.png" alt="Mushrooms Hero Image">
+    <div class="hero-overlay">
+      <h1>Mushrooms</h1>
+    </div>
+  </div>
+
+  <div class="menu" id="sidebarMenu">
+    <a href="#brief">Brief</a>
+    <a href="#overview">Overview</a>
+  </div>
+
+  <!-- Brief -->
+  <section class="section" id="brief">
+    <div class="text">
+      <h2>Brief</h2>
+      <p>Design a new tool for a specific food industry.
+ Chosen industry - food processing and growing.</p>
+    </div>
+    <div class="image">
+      <img src="Pics/Mushrooms_brief.png" alt="Mushrooms Brief">
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section" id="overview">
+    <div class="text">
+      <h2>Project Overview</h2>
+      <p>This ceramic Mushrooms Growing Pot was designed to offer a safe, user-friendly alternative for home growers, addressing the lack of proper tools and the challenges of maintaining a consistently moist environment.
+The pot features a unique one-sided glazed ceramic body paired with an airtight, dual-function silicone lid. Its material structure allows for moisture regulation: the unglazed inner side is designed to absorb water when wetted, gradually releasing humidity to create an ideal microclimate for mushroom growth. The glazed outer surface, combined with the silicone lid, helps prevent evaporation, reducing the need for frequent watering.<br><br>
+The pot is also stackable, making it suitable for compact indoor spaces.
+This design offers an accessible, elegant solution that supports healthy mushroom cultivation without relying on improvised or potentially unsafe setups.
+</p>
+    </div>
+    <div class="image">
+      <img src="Pics/Mushrooms_img1.png" alt="Mushrooms Overview">
+    </div>
+    <div id="gallery">
+      <div class="image"><img src="Pics/Mushrooms_img2.png" alt="Mushrooms Gallery 1"></div>
+      <div class="image"><img src="Pics/Mushrooms_img3.png" alt="Mushrooms Gallery 2"></div>
+    </div>
+  </section>
+
+  <script>
+    const header = document.getElementById('mainHeader');
+    const hero = document.getElementById('heroSection');
+    const menu = document.getElementById('sidebarMenu');
+    function onScroll() {
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      menu.classList.toggle('show', heroBottom <= 100);
+      header.classList.toggle('scrolled', heroBottom <= 100);
+    }
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+  </script>
+</body>
+</html>

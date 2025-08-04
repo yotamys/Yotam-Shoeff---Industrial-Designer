@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rendering – Yotam Shoeff</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; font-family: 'Helvetica Neue', sans-serif; background: #e5e5e5; color: #111; line-height: 1.6; }
+
+    /* Header styles */
+    header { position: fixed; top: 0; left: 0; width: 100%; padding: 1em 2em; display: flex; justify-content: space-between; align-items: center; background: transparent; z-index: 1000; transition: background-color .3s ease; }
+    .title { transition: opacity .3s ease; font-weight: bold; }
+    header.scrolled .title { opacity: 0; }
+
+    nav a { margin-left: 1.5em; text-decoration: none; color: #333; font-weight: 600; }
+    nav a:hover { color: #777; }
+    nav a.contact { transition: opacity .3s ease; }
+    header.scrolled nav a.contact { opacity: 0; pointer-events: none; }
+
+    /* Hero and overlay */
+    .hero {
+      position: relative;
+      width: 100vw;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .hero img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay {
+      position: absolute;
+      top: 2em;
+      left: 2em;
+      z-index: 1;
+      transition: opacity .3s ease, transform .3s ease;
+    }
+    .hero-overlay h1 {
+      font-size: 5rem;
+      margin: 0;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      font-weight: bold;
+    }
+    header.scrolled + .hero .hero-overlay {
+      opacity: 0;
+      transform: translateY(-100px);
+      pointer-events: none;
+    }
+
+    /* Section styling */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 6em 2em;
+      /* offset for anchor scrolling */
+      scroll-margin-top: -90px;
+    }
+    .section .text {
+      margin-bottom: 2em;
+    }
+
+    /* Gallery styling - full width under title, single column, 4:3 ratio (2560x1920) */
+    .gallery {
+      display: block;
+      width: 100%;
+      margin: 0;
+    }
+    .gallery .image {
+      width: 100%;
+      margin-bottom: 2em;
+    }
+    .gallery .image img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* Sidebar menu */
+    .menu { opacity: 0; pointer-events: none; position: fixed; top: 25%; right: 2em; transform: translateY(-50%); background: #fff; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); padding: 1em; transition: opacity .5s ease; z-index: 999; }
+    .menu.show { opacity: 1; pointer-events: auto; }
+    .menu a { display: block; margin: .5em 0; font-size: .95em; color: #111; text-decoration: none; }
+    .menu a:hover { color: #777; }
+
+  </style>
+</head>
+<body>
+  <header id="mainHeader">
+    <div class="title">Yotam Shoeff</div>
+    <nav>
+      <a href="Contact.html" class="contact">Contact</a>
+      <a href="‏‏Portfolio_v2.html">Back to Home</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="heroSection">
+    <img src="Pics/hero_Rendering.png" alt="Rendering Hero Image">
+    <div class="hero-overlay">
+      <h1>Rendering & CAD</h1>
+    </div>
+  </div>
+
+  <div class="menu" id="sidebarMenu">
+    <a href="#mouse">Mouse</a>
+    <a href="#hair-dryer">Hair Dryer</a>
+    <a href="#juicer">Juicer</a>
+    <a href="#plane">LEGO Airplane</a>
+  </div>
+
+  <!-- Mouse Section -->
+  <section class="section" id="mouse">
+    <div class="text">
+      <h2>Mouse</h2>
+    </div>
+    <div class="gallery">
+      <div class="image"><img src="Pics/Mouse_img1.png" alt="Mouse Image 1"></div>
+      <div class="image"><img src="Pics/Mouse_img2.png" alt="Mouse Image 2"></div>
+      <div class="image"><img src="Pics/Mouse_img3.png" alt="Mouse Image 3"></div>
+      <div class="image"><img src="Pics/Mouse_img4.png" alt="Mouse Image 4"></div>
+      <div class="image"><img src="Pics/Mouse_img5.png" alt="Mouse Image 5"></div>
+    </div>
+  </section>
+
+  <!-- Hair Dryer Section -->
+  <section class="section" id="hair-dryer">
+    <div class="text">
+      <h2>Hair Dryer</h2>
+    </div>
+    <div class="gallery">
+      <div class="image"><img src="Pics/Air_img1.png" alt="Hair Dryer Image 1"></div>
+      <div class="image"><img src="Pics/Air_img2.png" alt="Hair Dryer Image 2"></div>
+      <div class="image"><img src="Pics/Air_img3.png" alt="Hair Dryer Image 3"></div>
+    </div>
+  </section>
+
+  <!-- Juicer Section -->
+  <section class="section" id="juicer">
+    <div class="text">
+      <h2>Juicer</h2>
+    </div>
+    <div class="gallery">
+      <div class="image"><img src="Pics/Juicer_img1.png" alt="Juicer Image 1"></div>
+      <div class="image"><img src="Pics/Juicer_img2.png" alt="Juicer Image 2"></div>
+      <div class="image"><img src="Pics/Juicer_img3.png" alt="Juicer Image 3"></div>
+    </div>
+  </section>
+
+  <!-- LEGO Airplane Section -->
+  <section class="section" id="plane">
+    <div class="text">
+      <h2>LEGO Airplane</h2>
+    </div>
+    <div class="gallery">
+      <div class="image"><img src="Pics/Plane_img1.png" alt="Plane Image 1"></div>
+      <div class="image"><img src="Pics/Plane_img2.png" alt="Plane Image 2"></div>
+      <div class="image"><img src="Pics/Plane_img3.png" alt="Plane Image 3"></div>
+    </div>
+  </section>
+
+  <script>
+    const header = document.getElementById('mainHeader');
+    const hero = document.getElementById('heroSection');
+    const menu = document.getElementById('sidebarMenu');
+    function onScroll() {
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      menu.classList.toggle('show', heroBottom <= 100);
+      header.classList.toggle('scrolled', heroBottom <= 100);
+    }
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+  </script>
+</body>
+</html>
